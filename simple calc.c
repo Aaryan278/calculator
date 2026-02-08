@@ -1,12 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 
 int main() {
 
+    const double E = 2.71828182845904523536;// defines euler's number
+    const double PI = 3.14159265358979323846;// defines pi
+    char buffer[32];
     double num1, num2;
     int operator_selected;
     char input;
+
     printf("Options: +, -, *, / and ^ for exponents\n");
     printf("Enter the operator. Or enter q to quit.\n");
     scanf(" %c", &input); //gets first number or q input for quitting
@@ -37,11 +42,27 @@ int main() {
         return 1; // exits with error code
     }
 
-    printf("Enter the first number: \n");
-    scanf("%lf", &num1); //gets first number
+    printf("Enter the first number: (you can type pi or e)\n");
+    scanf("%31s", buffer);
 
-    printf("Enter the second number: \n");
-    scanf("%lf", &num2); //gets second number
+    if (strcmp(buffer, "pi") == 0) {
+        num1 = PI;
+    } else if (strcmp(buffer, "e") == 0) {
+        num1 = E;
+    } else {
+        num1 = strtod(buffer, NULL);
+    }
+
+    printf("Enter the first number: (you can type pi or e)\n");
+    scanf("%31s", buffer);
+
+    if (strcmp(buffer, "pi") == 0) {
+        num2 = PI;
+    } else if (strcmp(buffer, "e") == 0) {
+        num2 = E;
+    } else {
+        num2 = strtod(buffer, NULL);
+    }
 
     switch (operator_selected) {
         case 1: // addition
