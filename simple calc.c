@@ -7,8 +7,8 @@ int main() {
     double num1, num2;
     int operator_selected;
     char input;
-
-    printf("Enter the operator: Or enter q to quit.\n");
+    printf("Options: +, -, *, / and ^ for exponents\n");
+    printf("Enter the operator. Or enter q to quit.\n");
     scanf(" %c", &input); //gets first number or q input for quitting
 
     if (input == 'q' || input == 'Q') {
@@ -24,6 +24,14 @@ int main() {
         operator_selected = 3; // multiplication operator selected
     } else if (input == '/') {
             operator_selected = 4; // division operator selected
+    } else if (input == '^') {
+        operator_selected = 5; // exponentiation operator selected
+        printf("Enter the base number: \n");
+        scanf("%lf", &num1); //gets base number
+        printf("Enter the exponent: \n");
+        scanf("%lf", &num2); //gets exponent
+        printf("Result: %lf\n", pow(num1, num2)); // calculates and prints result of exponentiation
+        return 0; // exits after calculation
     } else {
         printf("Error: Invalid operator.");// operator that's not available chosen
         return 1; // exits with error code
